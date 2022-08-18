@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}作业批改网-上传图片{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+  <div class="row" style="margin-top: 30px;">
+    <div class="col">
+        <form action="" enctype='multipart/form-data' method='POST'>
+            <input type="file" name="file" style="margin-top:30px;"/>
+            <br>
+            <input type="text" class="txt_input" name="name"  value="例：2022-08-17" style="margin-top:10px;"/>
+            <input type="submit" value="上传图片" class="button-new" style="margin-top:15px;"/>
+            <br>
+            <div class="form-group" style="margin-top: 30px;">
+                <button class="btn btn-primary">
+                    提交作业
+                </button>
+            </div>
+        </form>
+        <img src="{{ url_for('static', filename= './images/test.jpg',_t=val1) }}" width="400" height="400" alt="图片丢失"/>
+    </div>
+    <div class="col">
+     <h1>输出</h1>
+        <form action="">
+        <div class="form-group">
+                <input type="text" name="output" class="form-control" placeholder="展示批改结果">
+        </div>
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}
