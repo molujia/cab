@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import cv2 as cv
 import time
-import ImageProcess as IP
+import ImageProcess
 bp=Blueprint("homework",__name__,url_prefix="/")
 
 # 设置允许的文件格式
@@ -37,9 +37,11 @@ def correct():
 
         return render_template('upload_ok.html', userinput=user_input, val1=time.time())
 
-    #IP.getResult('test.jpg')
     #return render_template('upload.html')
     return render_template("correct.html")
 
-#@bp.route("/homework/correct/result", methods=['POST', 'GET'])
-#def
+@bp.route("/homework/correct/result")
+def show():
+    ImageProcess.getResult('test.jpg')
+
+    return render_template('result.html')

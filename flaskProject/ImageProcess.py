@@ -164,7 +164,7 @@ def cv2ImgAddText(img, text, left, top, textColor=(255, 0, 0), textSize=20):
     # 创建一个可以在给定图像上绘图的对象
     draw = ImageDraw.Draw(img)
     # 字体的格式
-    fontStyle = ImageFont.truetype("fonts/FRADM.TTF", textSize, encoding="utf-8")
+    fontStyle = ImageFont.truetype("static/fonts/FRADM.TTF", textSize, encoding="utf-8")
     # 绘制文本
     draw.text((left, top), text, textColor, font=fontStyle)
     # 转换回OpenCV格式
@@ -251,10 +251,6 @@ def getResult(filename):
     images_path = images_dir + os.sep + filename
 
     image = cv.imread(images_path)
-
-    cv.imshow('ss', image)
-    cv.waitKey()
-    cv.destroyAllWindows()
 
     # 进行图片预处理
     processed_image = Preprocess(image)

@@ -4,7 +4,6 @@ from datetime import timedelta
 import config
 from blueprints import se_bp
 from blueprints import home_bp
-import ImageProcess as IP
 
 
 app = Flask(__name__)

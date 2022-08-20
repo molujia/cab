@@ -2,18 +2,26 @@
 
 {% block title %}作业批改网-作业批改{% endblock %}
 
-<link rel="icon" href="./static/images/图标.ico" type="image/x-icon">
+{% block head %}{% endblock %}
 
 {% block body %}
-  <div class="row" style="margin-top: 30px;">
+    <style>
+     body{
+        background: url(/static/images/background4.png);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+    }
+</style>
+  <div class="row" style="margin-top: 15px;">
     <div class="col">
         <form action="" enctype='multipart/form-data' method='POST'>
-            <input type="file" name="file" style="margin-top:30px;"/>
+            <input type="file" name="file" style="margin-top:15px;"/>
             <br>
             <input type="text" class="txt_input" name="name"  value="例：2022-08-17" style="margin-top:10px;"/>
             <input type="submit" value="上传图片" class="button-new" style="margin-top:15px;"/>
-            <div class="form-group" style="margin-top: 30px;">
-                <button class="btn btn-primary">
+            <div class="form-group" style="margin-top: 20px;">
+                <button class="btn btn-primary"  type="button" onclick="alert('还没有提交图片！')">
                     提交作业
                 </button>
             </div>
