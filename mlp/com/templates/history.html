@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <title>作业批改网-历史记录</title>
+    <link href="/static/icon.ico" rel="icon">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-light navbar-light navbar-fixed-top">
+    <div class="col-lg-2 offset-lg-1">
+        <a class="navbar-brand" href="#">
+            <img alt="Brand" src="/static/icon.ico" width="30" height="30">
+            作业批改网
+        </a>
+    </div>
+    <ul class="navbar-nav nav-tabs nav-justified col-lg-3">
+        <li class="nav-item">
+            <a class="nav-link" href='/{{username}}' id="intro">介绍</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href=/apply/{{username}}>产品体验</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">历史记录</a>
+        </li>
+    </ul>
+    <div class="col-lg-2 offset-lg-2">
+        <label class="label">Hello {{username}}</label>
+    </div>
+</nav>
+<div class="container" id="container">
+    {% if result[0] == "没" %}
+    <div class="alert alert-warning text-center" style="margin: 30px">
+        <h1>没有检测到历史记录</h1>
+    </div>
+    {% else %}
+    {% for path, date, accuracy in result %}
+    <a href="/{{path}}" style="text-decoration: None">
+        <div class="card bg-info" style="margin-top: 30px;margin-left: 40px;margin-right: 40px">
+            <div class="card-body text-white">
+                <h3>日期:{{date}}</h3>
+                <p1>正确率:{{accuracy}}</p1>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% endif %}
+</div>
+</body>
+
+<script>
+    var t = "{{result}}";
+    if (t == "0") {
+        alert("没有检测到历史记录")
+    };
+</script>
+
+</html>
