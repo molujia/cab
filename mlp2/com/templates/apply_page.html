@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <title>作业批改网-作业批改</title>
+    <link href="/static/resource/icon.ico" rel="icon">
+</head>
+
+<body>
+<style>
+     body{
+        background: url(/static/resource/background4.png);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+    }
+</style>
+<nav class="navbar navbar-expand-lg bg-light navbar-light navbar-fixed-top">
+    <div class="col-lg-2 offset-lg-1">
+        <a class="navbar-brand" href="#">
+            <img alt="BrandLogo" src="/static/resource/icon.ico" width="30" height="30">
+            作业批改网
+        </a>
+    </div>
+    <ul class="navbar-nav nav-tabs nav-justified col-lg-3">
+        <li class="nav-item">
+            <a class="nav-link" href='/' id="intro">使用介绍</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href='#top'>产品体验</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/history/{{username}}" id="history" style="pointer-events: none;">历史记录</a>
+        </li>
+    </ul>
+    <div class="col-lg-2 offset-lg-2">
+        <label class="label" id="user_label"></label>
+    </div>
+</nav>
+
+<!-- 在这里添加上传图片和结果显示内容 -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 offset-lg-1" style="margin-top:30px;margin-bottom: 30px">
+            <form name="upload_img" method="POST" enctype='multipart/form-data' id="form">
+                <!-- 视觉上将上传文件隐藏在图片后 -->
+                <label style="cursor:pointer">
+                    <input style="position:absolute;opacity:0;" type="file" name="img" id="img"/>
+                    <img style="width: 90%" src="/static/resource/upload_window.png" alt="上传图片">
+                </label>
+            </form>
+        </div>
+        <div class="col-lg-5 offset-lg-1" style="margin-top: 30px;margin-bottom: 30px;position: relative">
+            <img src="/static/resource/result_window.png" style="width: 90%" id="result" alt="结果显示区域">
+            <div class="spinner-border text-info spinner-border-lg"
+                 style="position: absolute;left: 210px;top: 180px;opacity: 0;" id="loading"></div>
+        </div>
+    </div>
+
+    <!-- 显示反馈信息 -->
+    <p class="text-center text-warning" id="para"><strong>{{msg}}</strong></p>
+</div>
+
+</body>
+<script>
+    if("{{username}}".length != 0){
+        document.getElementById('user_label').innerText = 'Hello {{username}}';
+        document.getElementById('history').style = "";
+        document.getElementById('intro').href = '/{{username}}'
+    };
+    document.getElementById("img").onchange = function () {
+        document.getElementById("form").submit();
+        document.getElementById('result').style.opacity = "0.1";
+        document.getElementById('loading').style.opacity = "1";
+        document.getElementById('para').innerText = "正在批改作业...";
+    };
+</script>
+</html>
